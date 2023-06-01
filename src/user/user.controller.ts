@@ -22,8 +22,8 @@ export class UserController {
   }
 
   @Get(':id')
-  async readOne(@Param() param) {
-    return { user: {}, param };
+  async readOne(@Param() params) {
+    return { user: {}, params };
   }
 
   @Put(':id')
