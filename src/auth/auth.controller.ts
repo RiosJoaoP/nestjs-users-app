@@ -114,12 +114,43 @@ export class AuthController {
   @UseGuards(AuthGuard)
   @Post('file-fields')
   async uploadFileFields(
+    @User() user,
     @UploadedFiles()
     files: {
       photo: Express.Multer.File;
       documents: Express.Multer.File[];
     },
   ) {
-    return files;
+    // try {
+    //   await this.fileService.upload(
+    //     files.photo,
+    //     join(
+    //       __dirname,
+    //       '..',
+    //       '..',
+    //       'storage',
+    //       'photos',
+    //       `photo-${user.id}.png`,
+    //     ),
+    //   );
+
+    //   files.documents.forEach(async (document, index) => {
+    //     await this.fileService.upload(
+    //       document,
+    //       join(
+    //         __dirname,
+    //         '..',
+    //         '..',
+    //         'storage',
+    //         'documents',
+    //         `document-${user.id}(${index}).png`,
+    //       ),
+    //     );
+    //   });
+    // } catch (e) {
+    //   throw new BadRequestException(e);
+    // }
+
+    return { success: true };
   }
 }
